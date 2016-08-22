@@ -34,4 +34,9 @@ public class Product {
     public void setProductPrice(String productPrice) {
         this.productPrice = productPrice;
     }
+
+    @Override
+    public String toString() {
+        return "Product Id= " + getProductId() + " Name= " + getProductName() + " Price= " + getProductPrice();
+    }
 }

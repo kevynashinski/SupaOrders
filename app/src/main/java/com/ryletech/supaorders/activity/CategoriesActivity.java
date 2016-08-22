@@ -39,16 +39,24 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.ryletech.supaorders.util.AppConfig.*;
+import static com.ryletech.supaorders.util.AppConfig.CATEGORIES_URL;
+import static com.ryletech.supaorders.util.AppConfig.CATEGORY_DESCRIPTION;
+import static com.ryletech.supaorders.util.AppConfig.CATEGORY_ICON;
+import static com.ryletech.supaorders.util.AppConfig.CATEGORY_ID;
+import static com.ryletech.supaorders.util.AppConfig.CATEGORY_NAME;
+import static com.ryletech.supaorders.util.AppConfig.INTENT_CATEGORIESACTIVITY_PRODUCTSACTIVITY_DATA;
+import static com.ryletech.supaorders.util.AppConfig.INTENT_SUPERMARKETSACTIVITY_CATEGORIESACTIVITY_DATA;
+import static com.ryletech.supaorders.util.AppConfig.SUPERMARKET_ID;
+import static com.ryletech.supaorders.util.AppConfig.TAG;
 
 public class CategoriesActivity extends AppCompatActivity implements CategoryAdapter.ClickListener {
 
     ArrayList<Category> categories = new ArrayList<>();
+    ProgressDialog progressDialog;
+    SuperMarket superMarket;
     private CoordinatorLayout categoriesCoordinatorLayout;
     private RecyclerView categoriesRecyclerView;
-    ProgressDialog progressDialog;
     private SwipeRefreshLayout categoriesSwipeRefreshLayout;
-    SuperMarket superMarket;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,9 +70,6 @@ public class CategoriesActivity extends AppCompatActivity implements CategoryAda
         }
 
         assignViews();
-
-
-
 
         categoriesRecyclerView.setLayoutManager(new LinearLayoutManager(getBaseContext()));
         categoriesRecyclerView.setItemAnimator(new DefaultItemAnimator());

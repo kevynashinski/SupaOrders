@@ -37,28 +37,29 @@
 
         <!--A layout shown when there's no supermarket found-->
         <LinearLayout
-            android:visibility="gone"
             android:id="@+id/emptyLayout"
-            android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <ImageView
-                android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
-                android:minWidth="100dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:minHeight="100dp"
+                android:minWidth="100dp"
                 android:src="@drawable/ic_error"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:text="No supermarkets available\n at a radius of 5km to your position"
                 android:textSize="20sp"
-                android:text="No supermarkets available\n at a radius of 5km to your position"/>
+                android:textStyle="bold" />
 
         </LinearLayout>
 

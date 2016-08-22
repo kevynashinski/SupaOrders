@@ -2,12 +2,17 @@ package com.ryletech.supaorders.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.view.*;
+import android.view.GestureDetector;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.github.pierry.simpletoast.SimpleToast;
 import com.hanks.library.AnimateCheckBox;
 import com.ryletech.supaorders.R;
+import com.ryletech.supaorders.database.ProductsDBHelper;
 import com.ryletech.supaorders.model.Product;
 
 import java.util.ArrayList;
@@ -33,15 +38,21 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Product product = products.get(position);
+        final Product product = products.get(position);
+
+        final ProductsDBHelper productsDBHelper = new ProductsDBHelper(context);
 
         holder.productName.setText(product.getProductName());
         holder.productPrice.setText(context.getResources().getString(R.string.price).concat(product.getProductPrice()));
         holder.checkBox.setOnCheckedChangeListener(new AnimateCheckBox.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(View buttonView, boolean isChecked) {
-                if(isChecked){
-                    SimpleToast.info(context,"Ready to Add to Cart");
+                if (isChecked) {
+                    productsDBHelper.addProductToCart(product);
+                    SimpleToast.info(context, product.getProductName() + " Added to Cart");
+                } else {
+                    productsDBHelper.removeProductFromCar(product);
+                    SimpleToast.muted(context, product.getProductName() + " Removed from Cart");
                 }
             }
         });

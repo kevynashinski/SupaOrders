@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                 xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                 xmlns:tools="http://schemas.android.com/tools"
-                                                 android:id="@+id/mainCoordinatorLayout"
-                                                 android:layout_width="match_parent"
-                                                 android:layout_height="match_parent"
-                                                 android:fitsSystemWindows="true"
-                                                 tools:context=".activity.MainActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainCoordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".activity.MainActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
@@ -25,21 +25,21 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <!--<FrameLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent">-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent">-->
 
-                <!--<ProgressBar-->
-                    <!--android:layout_gravity="center"-->
-                    <!--android:id="@+id/progressBarMain"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:indeterminate="true"/>-->
+            <!--<ProgressBar-->
+            <!--android:layout_gravity="center"-->
+            <!--android:id="@+id/progressBarMain"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:indeterminate="true"/>-->
 
-                <fragment
-                    android:id="@+id/map"
-                    android:name="com.google.android.gms.maps.SupportMapFragment"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+            <fragment
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
             <!--</FrameLayout>-->
 
@@ -48,13 +48,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="?attr/colorPrimary"
-                app:popupTheme="@style/AppTheme.PopupOverlay"/>
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_main"/>
+    <include layout="@layout/content_main" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -62,6 +62,6 @@
         android:layout_height="wrap_content"
         android:src="@android:drawable/ic_menu_view"
         app:layout_anchor="@id/app_bar"
-        app:layout_anchorGravity="center|bottom"/>
+        app:layout_anchorGravity="center|bottom" />
 
 </android.support.design.widget.CoordinatorLayout>

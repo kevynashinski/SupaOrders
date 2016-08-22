@@ -9,7 +9,11 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.design.widget.*;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -43,7 +47,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.ryletech.supaorders.AppController;
 import com.ryletech.supaorders.R;
 import com.ryletech.supaorders.adapter.SupermarketAdapter;
-import com.ryletech.supaorders.database.SupermarketsDBHelper;
 import com.ryletech.supaorders.model.SuperMarket;
 import com.ryletech.supaorders.model.SupermarketLocation;
 
@@ -53,22 +56,40 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import static com.ryletech.supaorders.util.AppConfig.*;
+import static com.ryletech.supaorders.util.AppConfig.GEOMETRY;
+import static com.ryletech.supaorders.util.AppConfig.GOOGLE_BROWSER_API_KEY;
+import static com.ryletech.supaorders.util.AppConfig.ICON;
+import static com.ryletech.supaorders.util.AppConfig.INTENT_SUPERMARKETSACTIVITY_CATEGORIESACTIVITY_DATA;
+import static com.ryletech.supaorders.util.AppConfig.LATITUDE;
+import static com.ryletech.supaorders.util.AppConfig.LOCATION;
+import static com.ryletech.supaorders.util.AppConfig.LONGITUDE;
+import static com.ryletech.supaorders.util.AppConfig.MIN_DISTANCE_CHANGE_FOR_UPDATES;
+import static com.ryletech.supaorders.util.AppConfig.MIN_TIME_BW_UPDATES;
+import static com.ryletech.supaorders.util.AppConfig.OK;
+import static com.ryletech.supaorders.util.AppConfig.PLACE_ID;
+import static com.ryletech.supaorders.util.AppConfig.PLAY_SERVICES_RESOLUTION_REQUEST;
+import static com.ryletech.supaorders.util.AppConfig.PROXIMITY_RADIUS;
+import static com.ryletech.supaorders.util.AppConfig.REFERENCE;
+import static com.ryletech.supaorders.util.AppConfig.RESULTS;
+import static com.ryletech.supaorders.util.AppConfig.STATUS;
+import static com.ryletech.supaorders.util.AppConfig.SUPERMARKET_ID;
+import static com.ryletech.supaorders.util.AppConfig.SUPERMARKET_NAME;
+import static com.ryletech.supaorders.util.AppConfig.TAG;
+import static com.ryletech.supaorders.util.AppConfig.VICINITY;
+import static com.ryletech.supaorders.util.AppConfig.ZERO_RESULTS;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback, LocationListener, SupermarketAdapter.ClickListener {
 
-    private GoogleMap mMap;
-
     LocationManager locationManager;
-
     CoordinatorLayout mainCoordinatorLayout;
 //    ProgressBar progressDialog;
     SupermarketLocation supermarketLocation;
-    private MenuItem refreshMenuItem;
     RecyclerView supermarketsRecyclerView;
-    private LinearLayout emptyLayout;
     ArrayList<SuperMarket> nearBySuperMarkets = new ArrayList<>();
     AppBarLayout appBarLayout;
+    private GoogleMap mMap;
+    private MenuItem refreshMenuItem;
+    private LinearLayout emptyLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -230,9 +251,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 nearBySuperMarkets.clear();
                 mMap.clear();
-
-                //        Clear Supermarket database
-                new SupermarketsDBHelper(getBaseContext()).deleteSupermarkets();
 
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject place = jsonArray.getJSONObject(i);
