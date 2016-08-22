@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Supa Orders</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_supermarket_map">Map</string>
+    <string name="title_activity_products">Products: products</string>
+    <string name="title_activity_supermarkets">Supermarkets</string>
+    <string name="title_activity_categories">Categories</string>
+    <string name="price">Price: Ksh. </string>
+
+    <!-- CustomTypefaceDemoSlide -->
+    <string name="header_custom_typeface">With Custom Typeface</string>
+    <string name="simple_custom">Simple Typeface example</string>
+    <string name="skip_done_typeface">Skip/Done typeface example</string>
+    <string name="simple_custom_two">Simple Typeface example 2</string>
+    <string name="title_font">nemoy_medium.ttf</string>
+    <string name="desc_font">OpenSans-Light.ttf</string>
+    <string name="title_activity_cart">Cart</string>
+
+</resources>

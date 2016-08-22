@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="3dp"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/supermarketIcon"
+            android:layout_width="100dp"
+            android:layout_height="110dp"
+            android:padding="5dp"
+            android:src="@mipmap/ic_launcher"/>
+
+        <TextView
+            android:id="@+id/supermarketName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/supermarketIcon"
+            android:layout_toRightOf="@+id/supermarketIcon"
+            android:paddingLeft="5dp"
+            android:paddingStart="5dp"
+            android:text="SuperMarket Name"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/vicinity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/supermarketName"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/supermarketIcon"
+            android:layout_toRightOf="@id/supermarketIcon"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:maxLines="2"
+            android:paddingLeft="5dp"
+            android:paddingStart="5dp"
+            android:text="Vicinity"/>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
+
