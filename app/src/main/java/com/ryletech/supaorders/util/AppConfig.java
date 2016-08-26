@@ -60,6 +60,11 @@ public final class AppConfig {
     public static final String CATEGORY_DESCRIPTION = "category_description";
     public static final String CATEGORY_ICON = "category_icon";
 
+    //    keys for orders
+    public static final String ORDER_ID = "product_id";
+    public static final String ORDERED_DATE = "ordered_date";
+
+
     //    keys for product
     public static final String PRODUCT_ID = "product_id";
     public static final String PRODUCT_NAME = "product_name";
@@ -67,7 +72,9 @@ public final class AppConfig {
     //    preferences
     public static final String FIRST_RUN = "first_run";
 //    private static final String SERVER_URL = "https://orders-kevynashinski.c9users.io/";
-        private static final String SERVER_URL = "http://192.168.56.1/orders/";
+//        private static final String SERVER_URL = "http://192.168.56.1/orders/";
+
+    private static final String SERVER_URL = "http://ecea9b2e.ngrok.io/orders/";
     public static final String CATEGORIES_URL = SERVER_URL + "categories.php";
     public static final String PRODUCTS_URL = SERVER_URL + "products.php";
     public static final String ORDERS_URL = SERVER_URL + "orders.php";
