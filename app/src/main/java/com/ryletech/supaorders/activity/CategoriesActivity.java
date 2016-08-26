@@ -14,6 +14,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -246,11 +247,21 @@ public class CategoriesActivity extends AppCompatActivity implements CategoryAda
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.cart_menu, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
 //                close this activity and return to previous one if any
                 finish();
+                break;
+            case R.id.cart:
+                startActivity(new Intent(CategoriesActivity.this, CartActivity.class));
                 break;
             default:
                 return super.onOptionsItemSelected(item);

@@ -14,6 +14,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -39,16 +40,22 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.ryletech.supaorders.util.AppConfig.*;
+import static com.ryletech.supaorders.util.AppConfig.CATEGORY_ID;
+import static com.ryletech.supaorders.util.AppConfig.INTENT_CATEGORIESACTIVITY_PRODUCTSACTIVITY_DATA;
+import static com.ryletech.supaorders.util.AppConfig.PRODUCTS_URL;
+import static com.ryletech.supaorders.util.AppConfig.PRODUCT_ID;
+import static com.ryletech.supaorders.util.AppConfig.PRODUCT_NAME;
+import static com.ryletech.supaorders.util.AppConfig.PRODUCT_PRICE;
+import static com.ryletech.supaorders.util.AppConfig.TAG;
 
 public class ProductsActivity extends AppCompatActivity {
 
     ArrayList<Product> products = new ArrayList<>();
+    ProgressDialog progressDialog;
+    Category category;
     private CoordinatorLayout productsCoordinatorLayout;
     private RecyclerView productsRecyclerView;
-    ProgressDialog progressDialog;
     private SwipeRefreshLayout productsSwipeRefreshLayout;
-    Category category;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -224,11 +231,21 @@ public class ProductsActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.cart_menu, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
 //                close this activity and return to previous one if any
                 finish();
+                break;
+            case R.id.cart:
+                startActivity(new Intent(ProductsActivity.this, CartActivity.class));
                 break;
             default:
                 return super.onOptionsItemSelected(item);

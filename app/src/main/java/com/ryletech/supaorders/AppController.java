@@ -1,9 +1,7 @@
 package com.ryletech.supaorders;
 
 import android.app.Application;
-import android.content.Context;
 import android.content.ContextWrapper;
-import android.support.multidex.MultiDex;
 import android.text.TextUtils;
 
 import com.android.volley.Request;
@@ -15,18 +13,17 @@ import static com.ryletech.supaorders.util.AppConfig.TAG;
 
 public class AppController extends Application {
 
+    private static AppController mInstance;
     private RequestQueue mRequestQueue;
 
-    private static AppController mInstance;
-//    String defaultFilePath;
-//    private static Storage storage;
+    public static synchronized AppController getInstance() {
+        return mInstance;
+    }
 
     @Override
     public void onCreate() {
         super.onCreate();
         mInstance = this;
-
-//        defaultFilePath = String.valueOf(getExternalFilesDir(null));
 
         // Initialize the Prefs class
         new Prefs.Builder()
@@ -36,49 +33,6 @@ public class AppController extends Application {
                 .setUseDefaultSharedPreference(true)
                 .build();
 
-//        Initialize Location, Tuk
-//        Prefs.putDouble(LATITUDE,0);
-//        Prefs.putDouble(LONGITUDE,0);
-
-//        initializeStorage();
-
-
-
-
-    }
-
-//    public static Storage getStorage() {
-//        return storage;
-//    }
-
-//    private void initializeStorage() {
-//        if (SimpleStorage.isExternalStorageWritable()) {
-//            storage = SimpleStorage.getExternalStorage();
-//        } else {
-//            storage = SimpleStorage.getInternalStorage(this);
-//        }
-//
-//        //create the external file directory
-//        if (!storage.isDirectoryExists(defaultFilePath)) {
-//            storage.createDirectory(defaultFilePath);
-//            Log.i(TAG, "initializeStorage: External file directory created");
-//        }
-//
-////        create the json file for offline Designs data
-//        if(!storage.isFileExist(defaultFilePath, FILENAME_NEARBY_PLACES)) {
-//            storage.createFile(defaultFilePath,FILENAME_NEARBY_PLACES,"");
-//            Log.i(TAG, "initializeStorage: The designs.txt file path is: " + storage.getFile(defaultFilePath, FILENAME_NEARBY_PLACES));
-//        }
-//    }
-
-    @Override
-    protected void attachBaseContext(Context base) {
-        super.attachBaseContext(base);
-        MultiDex.install(this);
-    }
-
-    public static synchronized AppController getInstance() {
-        return mInstance;
     }
 
     public RequestQueue getRequestQueue() {
@@ -104,5 +58,4 @@ public class AppController extends Application {
             mRequestQueue.cancelAll(tag);
         }
     }
-
 }

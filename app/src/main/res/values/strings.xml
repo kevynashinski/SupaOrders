@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Supa Orders</string>
+    <string name="app_name">Karibu Pay</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -19,5 +19,11 @@
     <string name="title_font">nemoy_medium.ttf</string>
     <string name="desc_font">OpenSans-Light.ttf</string>
     <string name="title_activity_cart">Cart</string>
+    <string name="title_activity_orders">My Orders</string>
+    <string name="title_activity_about">About Karibu Pay</string>
+    <string name="title_activity_spash_screen">SpashScreen</string>
+    <string name="welcome_to_karibu_order">VIEW SUPERMARKETS AROUND YOU \n BROWSE PRODUCTS CATEGORY \n ADD TO CART AND ORDER</string>
+    <string name="karibu_order">KARIBU ORDER</string>
+    <string name="title_activity_user_account">My Account Details</string>
 
 </resources>

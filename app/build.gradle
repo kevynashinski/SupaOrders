@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 24
-    buildToolsVersion "24.0.1"
+    buildToolsVersion "24.0.2"
 
     defaultConfig {
         applicationId "com.ryletech.supaorders"
@@ -38,4 +38,5 @@ dependencies {
     compile 'com.github.Pierry:SimpleToast:v1.7'
     compile 'com.hanks.animatecheckbox:library:0.1'
     compile 'com.github.paolorotolo:appintro:4.0.0'
+    compile 'com.github.Kennyc1012:BottomSheet:2.3.1'
 }

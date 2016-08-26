@@ -25,6 +25,7 @@ public final class AppConfig {
     public static final String LONGITUDE = "lng";
     public static final String ICON = "icon";
     public static final String SUPERMARKET_ID = "id";
+
     //    public static final String SUPERMARKET_NAME = "supermarket_name";
     public static final String SUPERMARKET_NAME = "name";
     public static final String PLACE_ID = "place_id";
@@ -32,6 +33,11 @@ public final class AppConfig {
     public static final String VICINITY = "vicinity";
     public static final String PLACE_NAME = "place_name";
 
+    //    user's account
+    public static final String ID_NUMBER = "id_number";
+    public static final String FULL_NAME = "full_name";
+    public static final String GENDER = "gender";
+    public static final String PHONE_NUMBER = "phone_number";
 
     public static final String GOOGLE_BROWSER_API_KEY = "AIzaSyA_iXa9oR6cwbmYS6BjFW8xiXeoezeRXOk";
     public static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
@@ -58,12 +64,12 @@ public final class AppConfig {
     public static final String PRODUCT_ID = "product_id";
     public static final String PRODUCT_NAME = "product_name";
     public static final String PRODUCT_PRICE = "product_price";
-
+    //    preferences
+    public static final String FIRST_RUN = "first_run";
 //    private static final String SERVER_URL = "https://orders-kevynashinski.c9users.io/";
         private static final String SERVER_URL = "http://192.168.56.1/orders/";
     public static final String CATEGORIES_URL = SERVER_URL + "categories.php";
     public static final String PRODUCTS_URL = SERVER_URL + "products.php";
-
-//    preferences
-public static final String FIRST_RUN = "first_run";
+    public static final String ORDERS_URL = SERVER_URL + "orders.php";
+    public static final String USER_ACCOUNTS_URL = SERVER_URL + "user_accounts.php";
 }

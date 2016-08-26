@@ -65,8 +65,6 @@ public class ProductsDBHelper extends SQLiteOpenHelper {
     public void addProductToCart(Product product) {
         SQLiteDatabase db = getWritableDatabase();
 
-        Log.i(TAG, "addToCart: Ready to add a record to database <<" + product.toString() + ">>");
-
         ContentValues values = new ContentValues();
         values.put(KEY_PRODUCT_ID, product.getProductId());
         values.put(KEY_PRODUCT_NAME, product.getProductName());
@@ -84,13 +82,13 @@ public class ProductsDBHelper extends SQLiteOpenHelper {
     public ArrayList<Product> getCartProducts() {
         ArrayList<Product> products = new ArrayList<>();
 
+        Log.i(TAG, "getCartProducts: Ready to load all the products form the cart");
+
         // Select All Query
         String selectQuery = "SELECT  * FROM " + TABLE_PRODUCTS;
 
         SQLiteDatabase db = getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
-
-        Log.i(TAG, "getProducts: Reading all the Products from the database");
 
         if (cursor.moveToFirst()) {
             do {
@@ -112,15 +110,20 @@ public class ProductsDBHelper extends SQLiteOpenHelper {
         return products;
     }
 
-    public Integer cartItemsCount() {
+    public boolean isItemThere() {
 
         String countQuery = "SELECT  * FROM " + TABLE_PRODUCTS;
-        SQLiteDatabase db = getReadableDatabase();
+        SQLiteDatabase db = getWritableDatabase();
         Cursor cursor = db.rawQuery(countQuery, null);
-        cursor.close();
 
+        if (cursor.getCount() > 0) {
+            Log.i(TAG, "isItemThere: There is an item in the cart");
+            return true;
+        }
+
+        Log.e(TAG, "isItemThere: No item is available in your cart");
         // return count
-        return cursor.getCount();
+        return false;
     }
 
     public void removeProductFromCar(Product product) {
@@ -134,5 +137,8 @@ public class ProductsDBHelper extends SQLiteOpenHelper {
     }
 
 //    add a method to bulk remove products form db
-
+public void clearCart() {
+    SQLiteDatabase db = this.getWritableDatabase();
+    onUpgrade(db, DATABASE_VERSION, DATABASE_VERSION + 1);
+}
 }

@@ -21,7 +21,7 @@ public class TutorialActivity extends AppIntro2 {
 
         if(!Prefs.getBoolean(FIRST_RUN,false)){
 //            show tutorial
-            startActivity(new Intent(TutorialActivity.this,MainActivity.class));
+            startActivity(new Intent(TutorialActivity.this, SplashScreenActivity.class));
         }
 
         //setContentView(R.layout.activity_custom_typeface);
@@ -55,6 +55,6 @@ public class TutorialActivity extends AppIntro2 {
         //        Initialize Tutorial Status
         Prefs.putBoolean(FIRST_RUN,true);
 
-        startActivity(new Intent(TutorialActivity.this, MainActivity.class));
+        startActivity(new Intent(TutorialActivity.this, SplashScreenActivity.class));
     }
 }

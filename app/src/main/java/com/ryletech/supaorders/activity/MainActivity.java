@@ -9,6 +9,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -44,6 +45,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.pixplicity.easyprefs.library.Prefs;
 import com.ryletech.supaorders.AppController;
 import com.ryletech.supaorders.R;
 import com.ryletech.supaorders.adapter.SupermarketAdapter;
@@ -205,9 +207,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         // set the progress bar view
         showProgressBar(true);
-//        hide the empty layout
-        if (emptyLayout.getVisibility() == View.VISIBLE)
-            emptyLayout.setVisibility(View.GONE);
 
         String type = "grocery_or_supermarket";
         String googlePlacesUrl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?" + "location=" + latitude + "," + longitude +
@@ -229,7 +228,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         showProgressBar(false);
-                        emptyLayout.setVisibility(View.VISIBLE);
 
                         Log.e(TAG, "onErrorResponse: Error= " + error);
                         Log.e(TAG, "onErrorResponse: Error= " + error.getMessage());
@@ -375,6 +373,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Log.i(TAG, "onOptionsItemSelected: Refresh; lng= " + supermarketLocation.getLongitude());
                 loadNearByPlaces(supermarketLocation.getLatitude(), supermarketLocation.getLongitude());
                 return true;
+//            case R.id.cart:
+//                startActivity(new Intent(MainActivity.this,CartActivity.class));
+//                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -392,20 +393,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_supermarkets) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
+        } else if (id == R.id.nav_shopping_cart) {
+            startActivity(new Intent(MainActivity.this, CartActivity.class));
+        } else if (id == R.id.nav_orders) {
+            startActivity(new Intent(MainActivity.this, OrdersActivity.class));
+        } else if (id == R.id.nav_manage_account) {
+            startActivity(new Intent(MainActivity.this, UserAccountActivity.class));
         } else if (id == R.id.nav_share) {
-
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/*");
+            intent.putExtra(Intent.EXTRA_TEXT, "Tell A Friend About Karibu Pay");
+// Pass the intent into the createShareBottomSheet method to generate the BottomSheet.
+            BottomSheet share = BottomSheet.createShareBottomSheet(getActivity(), intent, "My Title");
+// Make sure that it doesn't return null! If the system can not handle the intent, null will be returned.
+            if (share != null) {
+                share.show();
+            }
         } else if (id == R.id.nav_send) {
 
         }
@@ -494,6 +503,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onClick(View view, int position) {
+//        store the supermarkets id
+        Prefs.putString(SUPERMARKET_ID, nearBySuperMarkets.get(position).getSupermarketId());
+
         Intent intent = new Intent(MainActivity.this, CategoriesActivity.class);
         intent.putExtra(INTENT_SUPERMARKETSACTIVITY_CATEGORIESACTIVITY_DATA, nearBySuperMarkets.get(position));
         startActivity(intent);
