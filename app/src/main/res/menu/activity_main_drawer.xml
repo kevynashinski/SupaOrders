@@ -20,14 +20,14 @@
             android:title="Manage Account" />
 
         <item
+            android:id="@+id/feedback"
+            android:icon="@drawable/ic_feedback"
+            android:title="Feedback" />
+
+        <item
             android:id="@+id/about"
             android:icon="@android:drawable/ic_menu_info_details"
             android:title="About Karibu Pay" />
-
-        <item
-            android:id="@+id/feedback"
-            android:icon="@android:drawable/ic_menu_info_details"
-            android:title="Feedback" />
 
     </group>
 
@@ -36,11 +36,11 @@
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Share App" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:title="Share Karibu Pay App" />
+            <!--<item-->
+            <!--android:id="@+id/nav_send"-->
+            <!--android:icon="@drawable/ic_menu_send"-->
+            <!--android:title="Send" />-->
         </menu>
     </item>
 

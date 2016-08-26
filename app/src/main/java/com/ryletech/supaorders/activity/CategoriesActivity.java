@@ -134,8 +134,6 @@ public class CategoriesActivity extends AppCompatActivity implements CategoryAda
                 public void onResponse(String result) {
                     showRefreshing(false);
 
-                    SimpleToast.ok(getBaseContext(),"Categories loaded successfully!!!");
-
                     Log.i(TAG, "onResponse: Categories Result= " + result);
                     try {
                         parseCategoriesResult(new JSONObject(result));

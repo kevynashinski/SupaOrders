@@ -18,17 +18,17 @@ public class TutorialActivity extends AppIntro2 {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        if(!Prefs.getBoolean(FIRST_RUN,false)){
+        if (!Prefs.getBoolean(FIRST_RUN, true)) {
 //            show tutorial
             startActivity(new Intent(TutorialActivity.this, SplashScreenActivity.class));
+            finish();
         }
 
         //setContentView(R.layout.activity_custom_typeface);
-        addSlide(AppIntroFragment.newInstance("Get all supermarkets around you.",getResources().getString(R.string.desc_font),R.drawable.planet_earth, Color.parseColor("#27ae60")));
-        addSlide(AppIntroFragment.newInstance("Get a list of all the categories in each supermarket.",getResources().getString(R.string.desc_font),R.drawable.cloudy, Color.parseColor("#34495e")));
-        addSlide(AppIntroFragment.newInstance("View all the products offered at a supermarket.",getResources().getString(R.string.title_font),R.drawable.full_moon, Color.parseColor("#c0392b")));
-        addSlide(AppIntroFragment.newInstance("Fill your details and order the products of your choice.",getResources().getString(R.string.title_font),R.drawable.planet_earth, Color.parseColor("#27ae60")));
+        addSlide(AppIntroFragment.newInstance("Get all supermarkets around you.", "Within 1Km Radius", R.drawable.planet_earth, Color.parseColor("#27ae60")));
+        addSlide(AppIntroFragment.newInstance("Get a list of all the categories in each supermarket.", "Shop Easily With Simplified Supermarkets' Products Categories", R.drawable.cloudy, Color.parseColor("#34495e")));
+        addSlide(AppIntroFragment.newInstance("View all the products offered at a supermarket.", "Have a Glimpse of all Products a Supermarket Offers", R.drawable.full_moon, Color.parseColor("#c0392b")));
+        addSlide(AppIntroFragment.newInstance("Fill your details and order the products in your cart.", "Experience This Smart Revolutionary Shopping With Karibu pay in your hands", R.drawable.planet_earth, Color.parseColor("#27ae60")));
 //        setWizardMode(true);
         //show back with done button
         //setBackButtonVisibilityWithDone(false);
@@ -53,8 +53,9 @@ public class TutorialActivity extends AppIntro2 {
 
     private void loadMainActivity(){
         //        Initialize Tutorial Status
-        Prefs.putBoolean(FIRST_RUN,true);
+        Prefs.putBoolean(FIRST_RUN, false);
 
-        startActivity(new Intent(TutorialActivity.this, SplashScreenActivity.class));
+        startActivity(new Intent(TutorialActivity.this, MainActivity.class));
+        finish();
     }
 }

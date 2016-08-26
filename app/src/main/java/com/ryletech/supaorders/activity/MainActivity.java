@@ -32,6 +32,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -45,6 +46,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.kennyc.bottomsheet.BottomSheet;
 import com.pixplicity.easyprefs.library.Prefs;
 import com.ryletech.supaorders.AppController;
 import com.ryletech.supaorders.R;
@@ -103,7 +105,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setTitle("Supermarkets");
-
 
         assignViews();
 
@@ -173,9 +174,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
-                Intent intent = new Intent(MainActivity.this, CategoriesActivity.class);
-
-                startActivity(intent);
+//                marker.
+//                Intent intent = new Intent(MainActivity.this, CategoriesActivity.class);
+//                startActivity(intent);
             }
         });
 
@@ -366,6 +367,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.action_settings:
                 return true;
             case R.id.refresh:
+//        else if (id == R.id.refresh) {
+//            loadNearByPlaces(supermarketLocation.getLatitude(), supermarketLocation.getLongitude());
+//        }
                 refreshMenuItem = item;
 
 //                showProgressBar(true);
@@ -408,19 +412,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_share) {
             Intent intent = new Intent(Intent.ACTION_SEND);
             intent.setType("text/*");
-            intent.putExtra(Intent.EXTRA_TEXT, "Tell A Friend About Karibu Pay");
+            intent.putExtra(Intent.EXTRA_TEXT, "Hi, Download and Install this great shopping app, http://androidmastermind.blogspot.co.ke/");
 // Pass the intent into the createShareBottomSheet method to generate the BottomSheet.
-            BottomSheet share = BottomSheet.createShareBottomSheet(getActivity(), intent, "My Title");
+            BottomSheet share = BottomSheet.createShareBottomSheet(MainActivity.this, intent, "Tell A Friend About Karibu Pay");
 // Make sure that it doesn't return null! If the system can not handle the intent, null will be returned.
             if (share != null) {
                 share.show();
             }
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.about) {
+            MaterialDialog.Builder builder = new MaterialDialog.Builder(MainActivity.this)
+                    .title("So! What Is Karibu Pay?")
+                    .customView(R.layout.dialog_about, true)
+                    .canceledOnTouchOutside(true);
 
+            MaterialDialog dialog = builder.build();
+            dialog.show();
         }
-//        else if (id == R.id.refresh) {
-//            loadNearByPlaces(supermarketLocation.getLatitude(), supermarketLocation.getLongitude());
-//        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

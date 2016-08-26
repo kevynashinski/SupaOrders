@@ -10,6 +10,7 @@
     <string name="title_activity_supermarkets">Supermarkets</string>
     <string name="title_activity_categories">Categories</string>
     <string name="price">Price: Ksh. </string>
+    <string name="total_price">Total Price: Ksh. </string>
 
     <!-- CustomTypefaceDemoSlide -->
     <string name="header_custom_typeface">With Custom Typeface</string>
@@ -25,5 +26,6 @@
     <string name="welcome_to_karibu_order">VIEW SUPERMARKETS AROUND YOU \n BROWSE PRODUCTS CATEGORY \n ADD TO CART AND ORDER</string>
     <string name="karibu_order">KARIBU ORDER</string>
     <string name="title_activity_user_account">My Account Details</string>
+    <string name="about_karibu_pay">Karibu Pay Is A Futuristic, Whole New Revolutionary Way Of Shopping From The Comfort of Your Phone. Customers Get To See All The Products In Respective Supermarkets Around His/Her Location Within 1KM Radius And Orders The Products Which Will Delivered Promptly.</string>
 
 </resources>

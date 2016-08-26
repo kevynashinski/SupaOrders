@@ -28,7 +28,6 @@ import com.ryletech.supaorders.AppController;
 import com.ryletech.supaorders.R;
 import com.ryletech.supaorders.adapter.CategoryAdapter;
 import com.ryletech.supaorders.adapter.OrderAdapter;
-import com.ryletech.supaorders.model.Category;
 import com.ryletech.supaorders.model.Order;
 import com.ryletech.supaorders.util.InternetConnection;
 
@@ -49,7 +48,7 @@ import static com.ryletech.supaorders.util.AppConfig.TAG;
 public class OrdersActivity extends AppCompatActivity implements CategoryAdapter.ClickListener {
 
     ArrayList<Order> orders = new ArrayList<>();
-    Category category;
+    TextView emptyOrder;
     private CoordinatorLayout ordersCoordinatorLayout;
     private RecyclerView ordersRecyclerView;
     private SwipeRefreshLayout ordersSwipeRefreshLayout;
@@ -153,6 +152,8 @@ public class OrdersActivity extends AppCompatActivity implements CategoryAdapter
             }
         } else {
             SimpleToast.muted(getBaseContext(), "Add an Account first");
+
+            emptyOrder.setVisibility(View.VISIBLE);
         }
     }
 

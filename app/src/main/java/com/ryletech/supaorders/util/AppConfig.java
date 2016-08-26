@@ -39,6 +39,9 @@ public final class AppConfig {
     public static final String GENDER = "gender";
     public static final String PHONE_NUMBER = "phone_number";
 
+    //    Keys for orders
+    public static final String ORDERS_JSON = "orders";
+
     public static final String GOOGLE_BROWSER_API_KEY = "AIzaSyA_iXa9oR6cwbmYS6BjFW8xiXeoezeRXOk";
     public static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
     public static final int PROXIMITY_RADIUS = 5000;
@@ -72,11 +75,10 @@ public final class AppConfig {
     //    preferences
     public static final String FIRST_RUN = "first_run";
 //    private static final String SERVER_URL = "https://orders-kevynashinski.c9users.io/";
-//        private static final String SERVER_URL = "http://192.168.56.1/orders/";
-
-    private static final String SERVER_URL = "http://ecea9b2e.ngrok.io/orders/";
+private static final String SERVER_URL = "http://192.168.56.1/orders/";
+    //    private static final String SERVER_URL = "http://ecea9b2e.ngrok.io/orders/";
     public static final String CATEGORIES_URL = SERVER_URL + "categories.php";
     public static final String PRODUCTS_URL = SERVER_URL + "products.php";
     public static final String ORDERS_URL = SERVER_URL + "orders.php";
-    public static final String USER_ACCOUNTS_URL = SERVER_URL + "user_accounts.php";
+    public static final String USER_ACCOUNTS_URL = SERVER_URL + "user_account.php";
 }

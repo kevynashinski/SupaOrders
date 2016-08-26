@@ -121,8 +121,6 @@ public class ProductsActivity extends AppCompatActivity {
                 public void onResponse(String result) {
                     showRefreshing(false);
 
-                    SimpleToast.ok(getBaseContext(), "Products loaded successfully!!!");
-
                     Log.i(TAG, "onResponse: Products Result= " + result);
                     try {
                         parseProductsResult(new JSONObject(result));

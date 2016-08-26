@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.github.pierry.simpletoast.SimpleToast;
 import com.hanks.library.AnimateCheckBox;
 import com.ryletech.supaorders.R;
 import com.ryletech.supaorders.database.ProductsDBHelper;
@@ -37,7 +36,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(CartAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(final CartAdapter.ViewHolder holder, final int position) {
         final Product product = products.get(position);
 
         final ProductsDBHelper productsDBHelper = new ProductsDBHelper(context);
@@ -50,12 +49,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         holder.checkBox.setOnCheckedChangeListener(new AnimateCheckBox.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(View buttonView, boolean isChecked) {
-                if (isChecked) {
-                    productsDBHelper.addProductToCart(product);
-                    SimpleToast.info(context, product.getProductName() + " Added to Cart");
-                } else {
+                if (!isChecked) {
                     productsDBHelper.removeProductFromCar(product);
-                    SimpleToast.muted(context, product.getProductName() + " Removed from Cart");
+//                    SimpleToast.muted(context, product.getProductName() + " Removed from Cart");
+                    notifyItemRemoved(holder.getAdapterPosition());
                 }
             }
         });

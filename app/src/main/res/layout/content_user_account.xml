@@ -27,7 +27,8 @@
                 android:id="@+id/idNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Id Number" />
+                android:hint="Id Number"
+                android:inputType="number" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -87,12 +88,14 @@
         android:id="@id/llSaveAcount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp">
 
         <Button
             android:id="@+id/clearAccount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:background="@color/md_edittext_error"
             android:text="Clear Fields"
@@ -102,11 +105,12 @@
             android:id="@+id/saveDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:layout_weight="1"
             android:background="@color/cardview_light_background"
             android:text="Save Details"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
     </LinearLayout>
